@@ -86,14 +86,5 @@ export default {
   span {
     margin-top: 10px;
     font-size: 30px;
-    transition: all 1s ease;
-  }
-
-  .fade-transition {
-    transition: all 1s ease;
-  }
-
-  .fade-enter, .fade-leave {
-    opacity: 1;
   }
 </style>
