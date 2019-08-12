@@ -65,6 +65,7 @@ export default {
     width: 400px;
     height: 40px;
     font-size: 20px;
+    padding: 0 1rem;
     margin-bottom: 20px;
     border: 1px solid black;
     border-radius: 5px;
