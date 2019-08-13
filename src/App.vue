@@ -18,10 +18,12 @@ export default {
 }
 </script>
 
-<style scoped>
-body {
+<style>
+html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  background-color: lightblue;
 }
 
 #app {
@@ -30,6 +32,5 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: lightblue;
 }
 </style>

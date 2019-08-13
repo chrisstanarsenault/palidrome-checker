@@ -1,12 +1,14 @@
 <template>
+  <div id="full-container">
   <div id="palindrome-wrapper">
     <div id="form-container">
-      <form id="message" v-on:submit.prevent="onSubmit">
+      <form id="message" v-on:submit.prevent="palindromeCheck">
         <input v-model.lazy="string" id="string" name="string" placeholder="Enter a word or sentence" />
         <button>Submit</button>
         </form>
       </div>
-      <span transition=fade>{{palindrome}}{{palindromeSentence}}</span>
+      <span id="answer" transition=fade>{{palindrome}}{{palindromeSentence}}</span>
+  </div>
   </div>
 </template>
 
@@ -19,14 +21,10 @@ export default {
       palindrome: "",
       palindromePass: false,
       isTrue: false,
-      palindromeSentence: ""
+      palindromeSentence: "dont read me"
     }
   },
   methods: {
-    onSubmit: function() {
-      this.palindrome = this.string;
-      this.palindromeCheck()
-    },
     palindromeCheck: function() {
       const stringArray = this.string.toLowerCase().split("");
       const mapString1 = stringArray.map(s => s).join().replace(/[^A-Za-z0-9]+/g, "");
@@ -43,6 +41,7 @@ export default {
         this.isTrue = false;
         this.palindromeSentence = " is NOT a palindrome!"
       }
+      document.getElementById("answer").style.visibility = "visible"
       this.string="";
     }
   }
@@ -51,14 +50,30 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  #palindrome-wrapper {
-    padding: 20rem;
+  #full-container {
+    margin-top: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
   }
 
-  #form-container {
+  #palindrome-wrapper {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 1000px;
+    background-color: rgb(231, 231, 231);
+    border: 1px solid black;
+    border-radius: 5px;
+
+  }
+
+  #message {
+    display: flex;
+    flex-direction: column;
   }
 
   input {
@@ -75,9 +90,8 @@ export default {
     background-color: lightgreen;
     color: white;
     font-size: 20px;
-    margin-left: 10px;
+    margin-left: 115px;
     margin-top: -8px;
-    position: absolute;
     height: 60px;
     width: 200px;
     border-radius: 10px;
@@ -85,7 +99,8 @@ export default {
   }
 
   span {
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 30px;
+    visibility: hidden;
   }
 </style>
